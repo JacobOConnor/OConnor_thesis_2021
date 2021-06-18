@@ -1,0 +1,7 @@
+application = rosetta_android
+name = cispro_backbone_generation_short_PXPXXXXXXXX_SAVE_ALL_OUT
+description = peptide backbone sampling(PXPXXXXXXXX)
+inputfiles = cispro_backbone_generation_short_PXPXXXXXXXX.zip cispro_backbone_generation_short_PXPXXXXXXXX.flags
+arguments = @cispro_backbone_generation_short_PXPXXXXXXXX.flags
+resultfiles = default.out.gz
+queue = 1000

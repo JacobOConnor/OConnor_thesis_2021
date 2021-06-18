@@ -1,0 +1,22 @@
+This directory contains example scripts used to generate novel peptide macrocycle backbones from a pre-determiend stub. This method uses the Rosetta Scripts app, which is documented on the Rosetta Commons:
+https://new.rosettacommons.org/docs/latest/scripting_documentation/RosettaScripts/RosettaScripts
+rosettacommons.org/docs/ also contains the documentation for all of the protocols (such as GenKIC) used in this Rosetta script
+
+
+Beause the GENKIC mover requires an explicit declaration of all residues in the loop to be closed, a new rosetta script must be generated for different lengths of macrocycles.
+
+The example shown here uses a dipeptide stub that contains a cis peptide bond and will generate a silent file containing macrocycles 8 residues long.
+
+The command to run the scripts is:
+~/Rosetta/main/source/bin/rosetta_scripts.default.linuxgccrelease -in:file:fullatom -in:file:s stub.pdb -parser:protocol GenKIC.xml parser:script_vars Nres=8 -nstruct 1000 -out:file:silent_struct_type binary -out:file:silent backbones.out
+
+It will produce a binary silent file of ~1,000 peptide macrocycle all-glycine backbones. This can be run many times in parallel to generate seperate output files which can then be combined into 
+a single output file using ~/Rosetta/main/source/bin/combine_silent.default.linuxgccrelease -in:file:silent_struct_type binary -in:file:silent *.out -in:file:fullatom -out:file:silent_struct_type binary -out:file:silent name_of_output.out
+
+The binary format of the silent files is used to conserve memory. The scorefunction data of designs can be obtained from silent files using grep SCORE, but to obtain structural information pdbs 
+must be extracted using ~/Rosetta/main/source/bin/extract_pdbs.default.linuxgccrelease -in:file:silent_struct_type binary -in:file:fullatom -in:file:silent *.out -tags <tags>
+
+Where <tags> is a space deliminated list of the names of the structures in the silent file your wish to extract as pdbs. This is only necessary for visual inspection of backbones. All Rosetta
+applications are able to load in binary silent files directly. 
+
+Once backbones are generated they should be clustered to prevent wasting computational time on design trajectories starting from similar starting structures

@@ -1,0 +1,14 @@
+This method for genrating backbones uses the simple_cycpep_predict application. Full documentation for the app can be found here:
+https://new.rosettacommons.org/docs/latest/structure_prediction/simple_cycpep_predict
+
+This app requires a sequence file and flag file in order to specify the length of macrocycles to be generated, the sequence, an the rate
+with which to sample cis/trans confomrations at proline/N-methyl positions. This app can only generate confromations for one seuqence at
+a time, so it must be run multiple times to cover different patternings of n_methylated amino acids. For example, for a six residue peptide
+you might run it with the sequences GGGGGG, XGGGG, GXGGGG, and GGXGGG, wher X is an n-methylated amino acid. 
+
+For this method of backbone generation we utilized the Rosetta@Home volunteer distributed computing system: boinc.backerlab.org
+The scripts in this directory assume use of this system. If not using this system then you can run the app directly.
+
+To run the scripts in this directory use
+
+to run the app directly use

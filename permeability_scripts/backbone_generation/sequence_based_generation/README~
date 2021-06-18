@@ -1,0 +1,2 @@
+This method for genrating backbones uses the simple_cycpep_predict application. Full documentation for the app can be found here:
+https://new.rosettacommons.org/docs/latest/structure_prediction/simple_cycpep_predict

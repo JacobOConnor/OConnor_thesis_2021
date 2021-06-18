@@ -1,0 +1,22 @@
+-in:file:boinc_wu_zip cispro_backbone_generation_short_REPLACEME.zip
+-cyclic_peptide:sequence_file seq.txt
+-symmetric_gly_tables true
+-score:weights ref2015.wts
+-cyclic_peptide:genkic_closure_attempts 1000
+-cyclic_peptide:genkic_min_solution_count 1
+-cyclic_peptide:min_genkic_hbonds 2
+-cyclic_peptide:min_final_hbonds 2
+-cyclic_peptide:fast_relax_rounds 3
+-cyclic_peptide:rama_cutoff 3
+-cyclic_peptide:checkpoint_job_identifier check
+-cyclic_peptide:sample_cis_pro_frequency 0.75
+-cyclic_peptide:design_peptide true
+-cyclic_peptide:allowed_residues_by_position allowed_res.txt
+-cyclic_peptide:default_rama_sampling_table flat_symm_dl_aa_ramatable
+-mute all
+-cyclic_peptide:checkpoint_file REPLACEME.txt
+-out:file:silent default.out
+-database minirosetta_database
+-silent_gz
+-run:protocol simple_cycpep_predict
+-nstruct 100000

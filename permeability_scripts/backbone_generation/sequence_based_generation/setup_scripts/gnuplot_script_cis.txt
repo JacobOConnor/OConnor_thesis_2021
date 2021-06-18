@@ -1,0 +1,11 @@
+elot 'results_cis.txt' using 2:1 title "cis" w p pt 7 lt rgb "blue",'results_trans.txt' using 2:1 title "trans" w p pt 7 lt rgb "cyan"
+set xrange [0:4]
+set yrange [-30:50]
+set xlabel "RMSD to design (A)"
+set ylabel "Rosetta energy"
+set title "`cat title.txt`"
+set term png
+set output "energy_plot.png"
+replot
+set term x11
+replot
